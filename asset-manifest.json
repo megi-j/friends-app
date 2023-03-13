@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/friends-app/static/css/main.073c9b0a.css",
-    "main.js": "/friends-app/static/js/main.6fb64bfb.js",
+    "main.js": "/friends-app/static/js/main.a198e4fa.js",
     "index.html": "/friends-app/index.html",
     "main.073c9b0a.css.map": "/friends-app/static/css/main.073c9b0a.css.map",
-    "main.6fb64bfb.js.map": "/friends-app/static/js/main.6fb64bfb.js.map"
+    "main.a198e4fa.js.map": "/friends-app/static/js/main.a198e4fa.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.6fb64bfb.js"
+    "static/js/main.a198e4fa.js"
   ]
 }
