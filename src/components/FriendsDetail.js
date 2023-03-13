@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
 export default function FriendsDetail(props) {
+  const [isContactClicked, setIsContactClicked] = useState(false);
   let { name } = useParams();
 
   let chosenFriend =
@@ -23,17 +25,23 @@ export default function FriendsDetail(props) {
             style={{
               display: "flex",
               justifyContent: "space-between",
-
-              border: "1px solid blue",
             }}
           >
             <p>messages</p>
-            <p>contacts</p>
+            <p onClick={() => setIsContactClicked(true)}>contacts</p>
             <p>about me</p>
           </div>
           <div style={{ display: "flex", justifyContent: "space-evenly" }}>
             <p>security</p>
             <p>about me</p>
+          </div>
+          <div style={{ display: isContactClicked ? "block" : "none" }}>
+            <p>phone: {chosenFriend.phone}</p>
+            <p>
+              adres: {chosenFriend.location.street.name}
+              {chosenFriend.location.street.number}
+            </p>
+            <p>email: {chosenFriend.email}</p>
           </div>
         </MoreInfo>
       </DetailSection>
@@ -48,9 +56,7 @@ const DetailSection = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-around;
-  border: 1px solid green;
 `;
 const MoreInfo = styled.div`
-  border: 1px solid red;
   width: 40%;
 `;

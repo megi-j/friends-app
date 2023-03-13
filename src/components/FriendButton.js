@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export default function FriendButton() {
-  return <Button>Friends</Button>;
+export default function FriendButton(props) {
+  return <Button onClick={props.handleClick}>Friends</Button>;
 }
 
 const Button = styled.button`

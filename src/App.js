@@ -8,7 +8,11 @@ import FriendsDetail from "./components/FriendsDetail";
 function App() {
   const [data, setData] = useState();
   const [fetched, setFetched] = useState(false);
+  const [isFriendBtnClicked, setIsBtnClicked] = useState(false);
 
+  function handleClick() {
+    setIsBtnClicked(true);
+  }
   useEffect(() => {
     axios.get("https://randomuser.me/api/?results=20").then((response) => {
       const info = response.data.results;
@@ -19,7 +23,16 @@ function App() {
   console.log(data);
   return (
     <Routes>
-      <Route path="/" element={<Container fetched={fetched} data={data} />} />
+      <Route
+        path="/"
+        element={
+          <Container
+            isFriendBtnClicked={isFriendBtnClicked}
+            data={data}
+            handleClick={handleClick}
+          />
+        }
+      />
       <Route
         path="/:name"
         element={<FriendsDetail data={data} fetched={fetched} />}

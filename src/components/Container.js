@@ -5,10 +5,10 @@ import FriendButton from "./FriendButton";
 export default function Container(props) {
   return (
     <ContainerBox>
-      <FriendButton />
-      <FriendsSection>
-        {props.fetched &&
-          props.data.map((friend) => {
+      <FriendButton handleClick={props.handleClick} />
+      {props.isFriendBtnClicked && (
+        <FriendsSection>
+          {props.data.map((friend) => {
             return (
               <FriendCard
                 image={friend.picture.thumbnail}
@@ -17,7 +17,8 @@ export default function Container(props) {
               />
             );
           })}
-      </FriendsSection>
+        </FriendsSection>
+      )}
     </ContainerBox>
   );
 }
