@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Container from "./components/Container";
+import FriendsDetail from "./components/FriendsDetail";
 
 function App() {
+  const [data, setData] = useState();
+  const [fetched, setFetched] = useState(false);
+
+  useEffect(() => {
+    axios.get("https://randomuser.me/api/?results=20").then((response) => {
+      const info = response.data.results;
+      setFetched(true);
+      setData(info);
+    });
+  }, []);
+  console.log(data);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Container fetched={fetched} data={data} />} />
+      <Route
+        path="/:name"
+        element={<FriendsDetail data={data} fetched={fetched} />}
+      />
+    </Routes>
   );
 }
 
